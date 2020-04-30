@@ -1,0 +1,310 @@
+using System;
+					
+public class Program
+{
+	public static void Main()
+	{		
+		char[,] chars2D = new char[,]
+				{
+					{'B', 'M', 'H', 'V', 'D', 'Ş', 'L', 'İ', 'Ü', 'S'},    
+					{'Y', 'N', 'Ü', 'G', 'Z', 'Ü', 'A', 'T', 'T', 'P'},    
+					{'F', 'G', 'A', 'R', 'İ', 'P', 'N', 'İ', 'G', 'N'},    
+					{'Y', 'A', 'M', 'U', 'Ö', 'L', 'O', 'D', 'İ', 'O'},    
+					{'C', 'L', 'H', 'D', 'F', 'Ç', 'E', 'K', 'G', 'H'},    
+					{'F', 'H', 'S', 'U', 'A', 'E', 'K', 'Ü', 'A', 'T'},    
+					{'C', 'Ö', 'Ö', 'Y', 'T', 'Ş', 'L', 'O', 'İ', 'Y'},    
+					{'G', 'K', 'L', 'N', 'F', 'M', 'D', 'C', 'M', 'P'},    
+					{'N', 'A', 'I', 'Z', 'E', 'H', 'Ğ', 'A', 'İ', 'İ'},    
+					{'P', 'S', 'Ü', 'K', 'P', 'Ğ', 'I', 'P', 'J', 'D'}
+				}; 	
+		string[] words = {"KEML","GARİP","AHUT","RUDUY","DEET","HEZI","ŞADM","EFTAF"};
+		int satir = chars2D.GetLength(0); // char2D nin satır sayısına ihtiyacım var   10
+		int sutun = chars2D.GetLength(1); // char2D nin  sutun sayısına  ihtiyacım var 10 
+		int WordCaunt = words.Length; //kelime dizinin index sayısına ihtiyacım var    7
+		int toplam=0;int x=0;int y=0;
+		string aktar="";
+//Bir kelimenin harfi  kendi etrafınfa 8 yöne gidebilir	
+//1.
+// Kelimelerden başla
+for (int i=0;i<WordCaunt;i++)  {
+	string nextWord = words[i];
+	for(int a=0;a<nextWord.Length;a++){	
+		char harf =words[i][a];
+		int sayac=0;
+		//1.Yön başlama 
+		for (int str=0;str<satir;str++){	
+			for (int stn=0;stn<sutun;stn++){
+				char ikiBoyut= chars2D[str,stn];	
+				aktar="";
+				if(harf==ikiBoyut){
+				 	sayac=0;
+					aktar=aktar+ikiBoyut;
+					x=str;
+					y=stn;
+					try {
+						while(x>0){				
+						x--;
+						y++;
+						sayac++;
+						if(sayac<=nextWord.Length){
+						if(y<=(sutun-1)){
+							 ikiBoyut= chars2D[x,y];
+						     if(words[i][sayac]==ikiBoyut){
+							     aktar=aktar+ikiBoyut;
+								 if(nextWord.Length==aktar.Length){
+								    Console.WriteLine(aktar+" : ("+str+"-"+stn+") -- ("+x+"-"+y+") ");
+								 }	 
+							 }
+						}
+						}
+						}						
+						}
+						catch(IndexOutOfRangeException ex){
+						}	
+				}			 
+			}		
+	    }//1.Yön Bitiş
+		
+		
+		//2.Yön Başlama
+		for (int str=0;str<satir;str++){	
+			for (int stn=0;stn<sutun;stn++){
+				char ikiBoyut= chars2D[str,stn];	
+				aktar="";
+				if(harf==ikiBoyut){
+				 	sayac=0;
+					aktar=aktar+ikiBoyut;
+					x=str;
+					y=stn;
+					try {
+						while(y<=sutun-1){				
+						
+						y++;
+						sayac++;
+						if(sayac<=nextWord.Length){
+						if(y<=(sutun-1)){
+							 ikiBoyut= chars2D[x,y];
+						     if(words[i][sayac]==ikiBoyut){
+							     aktar=aktar+ikiBoyut;
+								 if(nextWord.Length==aktar.Length){
+								    Console.WriteLine(aktar+" : ("+str+"-"+stn+") -- ("+x+"-"+y+") ");
+								 }	 
+							 }
+						}
+						}
+						}						
+						}
+						catch(IndexOutOfRangeException ex){
+						}	
+				}			 
+			}		
+	    }//2.Yön Bitiş
+		
+		//3. Yön Başlangıç
+		for (int str=0;str<satir;str++){	
+			for (int stn=0;stn<sutun;stn++){
+				char ikiBoyut= chars2D[str,stn];	
+				aktar="";
+				if(harf==ikiBoyut){
+				 	sayac=0;
+					aktar=aktar+ikiBoyut;
+					x=str;
+					y=stn;
+					try {
+						while(x<=(satir-1)){				
+						x++;
+						y++;
+						sayac++;
+						if(sayac<=nextWord.Length){
+						if(y<=(sutun-1)){
+							 ikiBoyut= chars2D[x,y];
+						     if(words[i][sayac]==ikiBoyut){
+							     aktar=aktar+ikiBoyut;
+								 if(nextWord.Length==aktar.Length){
+								    Console.WriteLine(aktar+" : ("+str+"-"+stn+") -- ("+x+"-"+y+") ");
+								 }	 
+							 }
+						}
+						}
+						}						
+						}
+						catch(IndexOutOfRangeException ex){
+						}	
+				}			 
+			}		
+	    }//3.Yön Bitiş
+		
+		//4.Yön Başlangıç
+		for (int str=0;str<satir;str++){	
+			for (int stn=0;stn<sutun;stn++){
+				char ikiBoyut= chars2D[str,stn];	
+				aktar="";
+				if(harf==ikiBoyut){
+				 	sayac=0;
+					aktar=aktar+ikiBoyut;
+					x=str;
+					y=stn;
+					try {
+						while(x>0){				
+						x++;
+						
+						sayac++;
+						if(sayac<=nextWord.Length){
+						if(y<=(sutun-1)){
+							 ikiBoyut= chars2D[x,y];
+						     if(words[i][sayac]==ikiBoyut){
+							     aktar=aktar+ikiBoyut;
+								 if(nextWord.Length==aktar.Length){
+								    Console.WriteLine(aktar+" : ("+str+"-"+stn+") -- ("+x+"-"+y+") ");
+								 }	 
+							 }
+						}
+						}
+						}						
+						}
+						catch(IndexOutOfRangeException ex){
+						}	
+				}			 
+			}		
+	    }//4.Yön bitiş
+		
+		//5.Yön Başlangıç
+		for (int str=0;str<satir;str++){	
+			for (int stn=0;stn<sutun;stn++){
+				char ikiBoyut= chars2D[str,stn];	
+				aktar="";
+				if(harf==ikiBoyut){
+				 	sayac=0;
+					aktar=aktar+ikiBoyut;
+					x=str;
+					y=stn;
+					try {
+						while(x>0){				
+						x++;
+						y--;
+						sayac++;
+						if(sayac<=nextWord.Length){
+						if(y<=(sutun-1)){
+							 ikiBoyut= chars2D[x,y];
+						     if(words[i][sayac]==ikiBoyut){
+							     aktar=aktar+ikiBoyut;
+								 if(nextWord.Length==aktar.Length){
+								    Console.WriteLine(aktar+" : ("+str+"-"+stn+") -- ("+x+"-"+y+") ");
+								 }	 
+							 }
+						}
+						}
+						}						
+						}
+						catch(IndexOutOfRangeException ex){
+						}	
+				}			 
+			}		
+	    }//5.Yön Bitiş
+		
+		//6.Yön Başlangıç
+		for (int str=0;str<satir;str++){	
+			for (int stn=0;stn<sutun;stn++){
+				char ikiBoyut= chars2D[str,stn];	
+				aktar="";
+				if(harf==ikiBoyut){
+				 	sayac=0;
+					aktar=aktar+ikiBoyut;
+					x=str;
+					y=stn;
+					try {
+						while(y>0){				
+						
+						y--;
+						sayac++;
+						if(sayac<=nextWord.Length){
+						if(y<=(sutun-1)){
+							 ikiBoyut= chars2D[x,y];
+						     if(words[i][sayac]==ikiBoyut){
+							     aktar=aktar+ikiBoyut;
+								 if(nextWord.Length==aktar.Length){
+								    Console.WriteLine(aktar+" : ("+str+"-"+stn+") -- ("+x+"-"+y+") ");
+								 }	 
+							 }
+						}
+						}
+						}						
+						}
+						catch(IndexOutOfRangeException ex){
+						}	
+				}			 
+			}		
+	    }//6.Yön Bitiş
+		
+		//7.Yön Başlangıç
+		for (int str=0;str<satir;str++){	
+			for (int stn=0;stn<sutun;stn++){
+				char ikiBoyut= chars2D[str,stn];	
+				aktar="";
+				if(harf==ikiBoyut){
+				 	sayac=0;
+					aktar=aktar+ikiBoyut;
+					x=str;
+					y=stn;
+					try {
+						while(x>0){				
+						x--;
+						y--;
+						sayac++;
+						if(sayac<=nextWord.Length){
+						if(y<=(sutun-1)){
+							 ikiBoyut= chars2D[x,y];
+						     if(words[i][sayac]==ikiBoyut){
+							     aktar=aktar+ikiBoyut;
+								 if(nextWord.Length==aktar.Length){
+								    Console.WriteLine(aktar+" : ("+str+"-"+stn+") -- ("+x+"-"+y+") ");
+								 }	 
+							 }
+						}
+						}
+						}						
+						}
+						catch(IndexOutOfRangeException ex){
+						}	
+				}			 
+			}		
+	    }//7. Yön Btiş
+		
+		//8. Yön Başlangıç
+		for (int str=0;str<satir;str++){	
+			for (int stn=0;stn<sutun;stn++){
+				char ikiBoyut= chars2D[str,stn];	
+				aktar="";
+				if(harf==ikiBoyut){
+				 	sayac=0;
+					aktar=aktar+ikiBoyut;
+					x=str;
+					y=stn;
+					try {
+						while(x>0){				
+						x--;
+						
+						sayac++;
+						if(sayac<=nextWord.Length){
+						if(y<=(sutun-1)){
+							 ikiBoyut= chars2D[x,y];
+						     if(words[i][sayac]==ikiBoyut){
+							     aktar=aktar+ikiBoyut;
+								 if(nextWord.Length==aktar.Length){
+								    Console.WriteLine(aktar+" : ("+str+"-"+stn+") -- ("+x+"-"+y+") ");
+								 }	 
+							 }
+						}
+						}
+						}						
+						}
+						catch(IndexOutOfRangeException ex){
+						}	
+				}			 
+			}		
+	    }
+		
+		}
+      }
+	}
+}
