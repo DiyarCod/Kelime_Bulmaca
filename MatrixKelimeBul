@@ -17,7 +17,7 @@ public class Program
 					{'N', 'A', 'I', 'Z', 'E', 'H', 'Ğ', 'A', 'İ', 'İ'},    
 					{'P', 'S', 'Ü', 'K', 'P', 'Ğ', 'I', 'P', 'J', 'D'}
 				}; 	
-		string[] words = {"KEML","GARİP","AHUT","RUDUY","DEET","HEZI","ŞADM","EFTAF"};
+		string[] words = {"GARİP", "PYTHON" ,"TUHAF", "PALYAÇO", "GÜLMEK", "ÜZGÜN", "DİCLE"};
 		int satir = chars2D.GetLength(0); // char2D nin satır sayısına ihtiyacım var   10
 		int sutun = chars2D.GetLength(1); // char2D nin  sutun sayısına  ihtiyacım var 10 
 		int WordCaunt = words.Length; //kelime dizinin index sayısına ihtiyacım var    7
