@@ -1,5 +1,5 @@
 # Kelime_Bulmaca
-Bir Matrix içinde Kelime Bulma
+C# ile Bir Matrix içinde Kelime Bulma
 
           {'B', 'M', 'H', 'V', 'D', 'Ş', 'L', 'İ', 'Ü', 'S'},    
 					{'Y', 'N', 'Ü', 'G', 'Z', 'Ü', 'A', 'T', 'T', 'P'},    
