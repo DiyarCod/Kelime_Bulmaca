@@ -2,9 +2,11 @@ using System;
 
 
 public class Program	
-{	 
+{	public static int satir=0,sutun=0,sayac=0,WordCaunt=0,i=0,wordCar=0,sayac2;
+ 	public static string nextWord,words;
+ 	public static char harf;
 	public static void Main()
-	{			
+	{	
 	 	char[,] chars2D = new char[,]
 				{
 					{'B', 'M', 'H', 'V', 'D', 'Ş', 'L', 'İ', 'Ü', 'S'},    
@@ -19,26 +21,36 @@ public class Program
 					{'P', 'S', 'Ü', 'K', 'P', 'Ğ', 'I', 'P', 'J', 'D'}
 				}; 	
 		string[] words = {"GARİP","PYTHON","TUHAF","PALYAÇO","GÜLMEK","ÜZGÜN","DİCLE","FMD","DMF","GİGAİM","NYUD","ALYAÇ","İİAĞ","HDFÇ","DİPYT","EKLD","YAÇO","MTUH","ÇAYLA","MDAŞ"};
-		int satir = chars2D.GetLength(0); // char2D nin satır sayısına ihtiyacım var   10
-		int sutun = chars2D.GetLength(1); // char2D nin  sutun sayısına  ihtiyacım var 10 
-		int WordCaunt = words.Length; //kelime dizinin index sayısına ihtiyacım var    7
-		int toplam=0;int xKordinat=0;int yKordinat=0;int x1=0 ; int y1=0;int x2=0;int y2=0;   int xo=0;int yo=0;
-		string aktar="";int x3=0; int y3=0;int x4=0;int y4=0;int x5=0;int y5=0;
-		string aktar1="";int x6=0;int y6=0;int x7=0;int y7=0;int x8=0;int y8=0;
-		string aktar2="";string aktar3="";string aktar4="";string aktar5="";string aktar6="";string aktar7="";string aktar8="";
+		satir = chars2D.GetLength(0); // char2D nin satır sayısına ihtiyacım var   10
+		sutun = chars2D.GetLength(1); // char2D nin  sutun sayısına  ihtiyacım var 10 
+		WordCaunt = words.Length; //kelime dizinin index sayısına ihtiyacım var    7
+		
 //Bir kelimenin harfi  kendi etrafınfa 8 yöne gidebilir	
-//1.
 // Kelimelerden başla
 for (int i=0;i<WordCaunt;i++)  {
-	string nextWord = words[i];
-	int wordCar=nextWord.Length;
+	nextWord = words[i];
+	sayac2=i;
+	wordCar=nextWord.Length;
 	for(int a=0;a<nextWord.Length;a++){	
-		char harf =words[i][a];
-		int sayac=0;
-		//1.Yön başlama 
-		for (int str=0;str<satir;str++){	
-			for (int stn=0;stn<sutun;stn++){
-				char ikiBoyut= chars2D[str,stn];	
+		 harf =words[i][a];	
+		 KelimeKordinat(chars2D,words);
+		
+   }
+  }
+ }
+	public static void KelimeKordinat(char[,] chars2D, string[] words)
+	{	
+		int xKordinat=0;int yKordinat=0;int x1=0 ; int y1=0;int x2=0;int y2=0; int stn=-1;int st1=0;
+		string aktar="";int x3=0; int y3=0;int x4=0;int y4=0;int x5=0;int y5=0;int str=0;
+		string aktar1="";int x6=0;int y6=0;int x7=0;int y7=0;int x8=0;int y8=0;
+		string aktar2="";string aktar3="";string aktar4="";string aktar5="";string aktar6="";string aktar7="";string aktar8="";
+		for (int st=0;st<satir;st++){	
+		    	 stn++;
+				if(stn<=9)
+				{  st=st1;}
+				else if(stn>9)
+					{ stn=0;st1++;str++;}
+				char ikiBoyut= chars2D[str,stn];
 				aktar="";
 				if(harf==ikiBoyut){
 				 	sayac=0;
@@ -55,7 +67,7 @@ for (int i=0;i<WordCaunt;i++)  {
 					x6=xKordinat;   y6=yKordinat;
 					x7=xKordinat;   y7=yKordinat;
 					x8=xKordinat;   y8=yKordinat;
-					wordCar=nextWord.Length;						
+					wordCar =nextWord.Length;						
 						//1.YÖN BAŞLANGIÇ
 						while(wordCar>0){
 						wordCar--;
@@ -66,7 +78,7 @@ for (int i=0;i<WordCaunt;i++)  {
 						if(y1<=(sutun-1)){
 							if(x1>=0){
 							 ikiBoyut= chars2D[x1,x2];						     
-						     if(words[i][sayac]==ikiBoyut){
+						     if(words[sayac2][sayac]==ikiBoyut){
 							     aktar1=aktar1+ikiBoyut;								 
 								 if(nextWord.Length==aktar1.Length){
 									 Console.Write(" 1.yön ; ");									
@@ -77,7 +89,7 @@ for (int i=0;i<WordCaunt;i++)  {
 						if(sayac<nextWord.Length){
 						if(y2<=(sutun-1)){
 							 ikiBoyut= chars2D[x2,y2];
-						     if(words[i][sayac]==ikiBoyut){
+						     if(words[sayac2][sayac]==ikiBoyut){
 							     aktar2=aktar2+ikiBoyut;
 								 if(nextWord.Length==aktar2.Length){
 									Console.Write(" 2.yön ; ");
@@ -90,7 +102,7 @@ for (int i=0;i<WordCaunt;i++)  {
 						if(y3<=(sutun-1)){
 							if(x3<=(satir-1)){
 							 ikiBoyut= chars2D[x3,y3];
-						     if(words[i][sayac]==ikiBoyut){
+						     if(words[sayac2][sayac]==ikiBoyut){
 							     aktar3=aktar3+ikiBoyut;
 								 if(nextWord.Length==aktar3.Length){
 									 Console.Write(" 3.yön ; ");
@@ -101,7 +113,7 @@ for (int i=0;i<WordCaunt;i++)  {
 						if(sayac<nextWord.Length){
 						if(x4<=(satir-1)){
 							     ikiBoyut= chars2D[x4,y4];
-						     if(words[i][sayac]==ikiBoyut){
+						     if(words[sayac2][sayac]==ikiBoyut){
 							     aktar4=aktar4+ikiBoyut;
 								 if(nextWord.Length==aktar4.Length){
 								    Console.Write(" 4.yön ; ");
@@ -114,7 +126,7 @@ for (int i=0;i<WordCaunt;i++)  {
 						if(y5>=0){
 							if(x5<=(satir-1)){
 							 ikiBoyut= chars2D[x5,y5];
-						     if(words[i][sayac]==ikiBoyut){
+						     if(words[sayac2][sayac]==ikiBoyut){
 							     aktar5=aktar5+ikiBoyut;
 								 if(nextWord.Length==aktar5.Length){
 									 Console.Write(" 5.yön ; ");
@@ -125,7 +137,7 @@ for (int i=0;i<WordCaunt;i++)  {
 						if(sayac<nextWord.Length){
 						if(y6>=0){
 							 ikiBoyut= chars2D[x6,y6];
-						     if(words[i][sayac]==ikiBoyut){
+						     if(words[sayac2][sayac]==ikiBoyut){
 							     aktar6=aktar6+ikiBoyut;
 								 if(nextWord.Length==aktar6.Length){
 									 Console.Write(" 6.yön ; ");
@@ -138,7 +150,7 @@ for (int i=0;i<WordCaunt;i++)  {
 						if(y7>=0){
 							if(x7>=0){
 							 ikiBoyut= chars2D[x7,y7];
-						     if(words[i][sayac]==ikiBoyut){
+						     if(words[sayac2][sayac]==ikiBoyut){
 							     aktar7=aktar7+ikiBoyut;
 								 if(nextWord.Length==aktar7.Length){
 									 Console.Write(" 7.yön ; ");
@@ -149,21 +161,18 @@ for (int i=0;i<WordCaunt;i++)  {
 						if(sayac<nextWord.Length){
 						if(x8>=0){
 							 ikiBoyut= chars2D[x8,y8];
-						     if(words[i][sayac]==ikiBoyut){
+						     if(words[sayac2][sayac]==ikiBoyut){
 							     aktar8=aktar8+ikiBoyut;
 								 if(nextWord.Length==aktar8.Length){
 									 Console.Write(" 8.yön ; ");
 								     Console.WriteLine(aktar8+" : ("+str+"-"+stn+") -- ("+x8+"-"+y8+") ");}}}}
 							//8.yön SON
+		
+				}					
+			  }			 
+			
+		    }		
+		}
+		
 
-						
-						
-					 		
-		}					
-	  }			 
-     }		
-	}
-   }
-  }
- }
 }
